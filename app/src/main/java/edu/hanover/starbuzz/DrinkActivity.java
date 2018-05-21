@@ -76,7 +76,7 @@ public class DrinkActivity extends Activity {
     }
 
     //Inner class to update the drink.
-    private class UpdateDrinktask extends AsyncTask<Integer, void, Boolean> {
+    private class UpdateDrinktask extends AsyncTask<Integer, Void, Boolean> {
         ContentValues drinkValues;
 
         protected void onPreExecute() {
