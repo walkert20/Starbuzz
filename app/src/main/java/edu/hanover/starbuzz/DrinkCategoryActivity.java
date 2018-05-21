@@ -12,6 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.CursorAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
+import android.util.Log;
 
 
 public class DrinkCategoryActivity extends ListActivity{
@@ -24,6 +25,7 @@ public class DrinkCategoryActivity extends ListActivity{
         super.onCreate(savedInstanceState);
         ListView listDrinks = getListView();
         try {
+            Log.d("DrinkCategoryActivity", "In onCreate()");
             SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
             db = starbuzzDatabaseHelper.getReadableDatabase();
             cursor = db.query("DRINK", new String[] {"_id", "NAME"},
@@ -32,6 +34,7 @@ public class DrinkCategoryActivity extends ListActivity{
                     new int[]{android.R.id.text1},0);
             listDrinks.setAdapter(listAdapter);
         } catch(SQLiteException e) {
+            Log.d("DrinkCategoryActivity", "in Catch ");
             Toast toast = Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT);
             toast.show();
         }

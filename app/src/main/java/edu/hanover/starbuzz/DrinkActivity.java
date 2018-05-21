@@ -21,9 +21,8 @@ public class DrinkActivity extends Activity {
 
         //Get the drink from the intent
         int drinkNo = (Integer)getIntent().getExtras().get(EXTRA_DRINKNO);
-        Drink drink = Drink.drinks[drinkNo];
 
-        //Creat a cursor
+        //Create a cursor
         try {
             SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
             SQLiteDatabase db = starbuzzDatabaseHelper.getReadableDatabase();
@@ -31,16 +30,20 @@ public class DrinkActivity extends Activity {
                     "_id = ?", new String[] {Integer.toString(drinkNo)}, null, null,null);
             //Move to the first record in the Cursor
             if (cursor.moveToFirst()) {
+
                 //get the drink details from the cursor
                 String nameText = cursor.getString(0);
-                String descriptiontext = cursor.getString(1);
+                String descriptionText = cursor.getString(1);
                 int photoId = cursor.getInt(2);
+
                 //Populate the drink name
                 TextView name = (TextView) findViewById(R.id.name);
                 name.setText(nameText);
+
                 //populate the drink description
                 TextView description = (TextView) findViewById(R.id.description);
-                description.setText(drink.getDescription());
+                description.setText(descriptionText);
+
                 //Populate the drink image
                 ImageView photo = (ImageView) findViewById(R.id.photo);
                 photo.setImageResource(photoId);
