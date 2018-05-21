@@ -68,4 +68,19 @@ public class TopLevelActivity extends Activity {
         favoritesCursor.close();
         db.close();
     }
+
+    public void onRestart() {
+        super.onRestart();
+        try{
+            StarbuzzDatabaseHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
+            db = starbuzzDatabaseHelper.getReadableDatabase();
+            Cursor newCursor = db.query("DRINK", new String[] {"_id", "NAME"}, "FAVORITE = 1", null, null, null, null);
+            ListView listFavorites = (ListView)findViewById(R.id.list_favorites);
+            CursorAdapter adapter = (CursorAdapter) listFavorites.getAdapter();
+            adapter.changeCursor(newCursor);
+        } catch(SQLiteException e) {
+            Toast toast = Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
 }
