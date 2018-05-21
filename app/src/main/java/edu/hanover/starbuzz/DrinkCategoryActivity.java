@@ -12,7 +12,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.CursorAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
-import android.widget.SimpleCursorAdapter;
 
 
 public class DrinkCategoryActivity extends ListActivity{
