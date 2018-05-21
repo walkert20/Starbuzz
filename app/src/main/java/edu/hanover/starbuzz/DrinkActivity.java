@@ -79,7 +79,7 @@ public class DrinkActivity extends Activity {
             db.update("DRINK", drinkValues, "_id = ?", new String[] {Integer.toString(drinkNo)});
             db.close();
         } catch (SQLiteException e) {
-            Toast toast = Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT);\
+            Toast toast = Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT);
             toast.show();
         }
     }
