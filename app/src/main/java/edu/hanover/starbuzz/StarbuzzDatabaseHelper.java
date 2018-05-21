@@ -20,7 +20,7 @@ class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase dp, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         updateMyDatabase(db, oldVersion, newVersion);
     }
 
